@@ -1,0 +1,5 @@
+require_relative 'struct_ext'
+require 'csv'
+require_relative 'csv_ext'
+require_relative 'categories'
+require_relative 'statement_data'
