@@ -1,7 +1,6 @@
 require 'sinatra/base'
-require 'json'
+require 'bankstatements'
 require_relative 'routes/init'
-require_relative 'lib/init'
 
 class BankStatementsApp < Sinatra::Base
   enable :method_override
@@ -24,4 +23,9 @@ class BankStatementsApp < Sinatra::Base
     set :raise_errors, false #false will show nicer error page
     set :show_exceptions, false #true will ignore raise_errors and display backtrace in browser
   end
+
+  set :bank_data, BankStatements::CSVBankData.new(Dir['./data/*.csv'].map(&File.method(:realpath)))
+  set :transaction_service, BankStatements::TransactionService.new(settings.bank_data)
+  set :summary_service, BankStatements::SummaryService.new(settings.bank_data)
+
 end
