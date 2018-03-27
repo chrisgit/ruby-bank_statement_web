@@ -20,12 +20,12 @@ class BankStatementsApp < Sinatra::Base
   end
 
   configure :production do
-    set :raise_errors, false #false will show nicer error page
-    set :show_exceptions, false #true will ignore raise_errors and display backtrace in browser
+    #false will show nicer error page
+    set :raise_errors, false
+    #true will ignore raise_errors and display backtrace in browser
+    set :show_exceptions, false
   end
 
-  set :bank_data, BankStatements::CSVBankData.new(Dir['./data/*.csv'].map(&File.method(:realpath)))
-  set :transaction_service, BankStatements::TransactionService.new(settings.bank_data)
+  set :bank_data, BankStatements::CSVBankData.new(csv_files: Dir['./data/*.csv'].map(&File.method(:realpath)))
   set :summary_service, BankStatements::SummaryService.new(settings.bank_data)
-
 end

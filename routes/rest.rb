@@ -1,8 +1,9 @@
+#
+# Main paths for the bank web app
 class BankStatementsApp < Sinatra::Base
-
 # Send back transactions and summary as a single JSON object
   get '/transactions' do
-    transactions = settings.transaction_service.transactions
+    transactions = settings.bank_data.query(nil, nil, nil, nil)
     transactions.to_json
   end
 
