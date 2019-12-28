@@ -9,17 +9,3 @@ group :development do
  gem 'pry-byebug'
  gem 'rb-readline'
 end
-
-=begin
-group :development do
-  gem "awesome_print"
-  gem "shotgun"
-  gem "yard"
-  gem "rdiscount"
-end
-
-group :test do
-  gem "rack-test"
-  gem "capybara-webkit"
-end
-=end
