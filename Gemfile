@@ -1,7 +1,7 @@
 source "http://rubygems.org"
 gem 'json'
 gem 'sinatra'
-gem 'rack'
+gem 'rack', '>= 2.1.4'
 gem 'bank_statements'
 
 group :development do
